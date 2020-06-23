@@ -1,0 +1,28 @@
+standalone_toolchain=/myfolder/arm_21_toolchain # Adjust this path
+target_host=arm-linux-androideabi
+cc_compiler=clang
+cxx_compiler=clang++
+
+[settings]
+compiler=clang
+compiler.version=5.0
+compiler.libcxx=libc++
+os=Android
+os.api_level=21
+arch=armv7
+build_type=Release
+
+[env]
+CONAN_CMAKE_FIND_ROOT_PATH=$standalone_toolchain/sysroot
+PATH=[$standalone_toolchain/bin]
+CHOST=$target_host
+AR=$target_host-ar
+AS=$target_host-as
+RANLIB=$target_host-ranlib
+CC=$target_host-$cc_compiler
+CXX=$target_host-$cxx_compiler
+LD=$target_host-ld
+STRIP=$target_host-strip
+CFLAGS= -fPIE -fPIC -I$standalone_toolchain/include/c++/4.9.x
+CXXFLAGS= -fPIE -fPIC -I$standalone_toolchain/include/c++/4.9.x
+LDFLAGS= -pie
