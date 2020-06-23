@@ -1,0 +1,26 @@
+# Profiles can be stored in:
+# ~/.conan/profiles/default
+
+# Usage:
+# https://docs.conan.io/en/latest/using_packages/using_profiles.html
+# conan install --profile=../profiles/apple_clang_profile 
+
+[settings]
+os=Macos
+arch=x86_64
+compiler=apple-clang
+build_type=Release
+#compiler.version=3.5
+#compiler.libcxx=libstdc++17
+
+[options]
+# MyLib:shared=True
+
+[build_requires]
+# tool1/0.1@user/channel
+# tool2/0.1@user/channel, tool3/0.1@user/channel
+# *: tool4/0.1@user/channel
+
+[env]
+#CC=/usr/bin/clang
+#CXX=/usr/bin/clang++

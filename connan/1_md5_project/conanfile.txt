@@ -1,0 +1,23 @@
+[requires]
+poco/1.9.4
+# openssl/1.0.2u - it overrides previous depencies
+
+[generators]
+cmake
+
+# Формат:
+#   PACKAGE:OPTION=VALUE
+# Либо можно прямо при генерации указывать:
+#   conan install .. -o poco:shared=True -o openssl:shared=True
+#   conan install .. -o *:shared=True
+[options]
+poco:shared=True
+poco:cxx_14=True
+poco:fPIC=True
+openssl:shared=True
+
+[imports]
+# Копирует все динамические библиотеки из пакетов в папку bin
+bin, *.dll -> ./bin
+# Копирует все динамические библиотеки из пакетов в папку bin 
+lib, *.dylib* -> ./bin

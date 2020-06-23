@@ -1,6 +1,0 @@
-[requires]
-poco/1.9.4
-# openssl/1.0.2u - it overrides previous depencies
-
-[generators]
-cmake
