@@ -44,6 +44,37 @@ BUILD_IOS: CLEAN
 	cmake --build . ; \
 	cd ../
 
+# Сборка приложения с учетом зависимостей
+#-DCMAKE_C_COMPILER=$(ANDROID_NDK)/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi21-clang
+#-DCMAKE_CXX_COMPILER=$(ANDROID_NDK)/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi21-clang++ 
+# cmake \
+# 	-G "Unix Makefiles" \
+# 	-DCMAKE_TOOLCHAIN_FILE=$(ANDROID_NDK)/build/cmake/android.toolchain.cmake \
+# 	-DANDROID_ABI=21 \
+# 	-DCMAKE_BUILD_TYPE=Release \
+# 	.. && \
+# cmake --build . ; \
+
+# https://developer.android.com/ndk/guides/cmake#variables
+BUILD_ANDROID: CLEAN
+	mkdir -p build_android && \
+	cd build_android && \
+	conan install \
+		-e PATH=$(ANDROID_NDK)/toolchains/llvm/prebuilt/darwin-x86_64/bin \
+		--profile=../profiles/android_21_armv8_clang \
+		--build=missing \
+		--install-folder . \
+		.. && \
+	cmake \
+		-G "Unix Makefiles" \
+		-DCMAKE_TOOLCHAIN_FILE=$(ANDROID_NDK)/build/cmake/android.toolchain.cmake \
+		-DANDROID_ABI=arm64-v8a \
+		-DANDROID_ARM_NEON=TRUE \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
+	cmake --build . ; \
+	cd ../
+
 # Запуск
 RUN: BUILD
 	cd build/bin && \
