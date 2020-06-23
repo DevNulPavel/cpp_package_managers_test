@@ -11,13 +11,13 @@ cmake
 #   conan install .. -o poco:shared=True -o openssl:shared=True
 #   conan install .. -o *:shared=True
 [options]
-poco:shared=True
+poco:shared=False
 poco:cxx_14=True
 poco:fPIC=True
-openssl:shared=True
+openssl:shared=False
 
 [imports]
 # Копирует все динамические библиотеки из пакетов в папку bin
-bin, *.dll -> ./bin
+#bin, *.dll -> ./bin
 # Копирует все динамические библиотеки из пакетов в папку bin 
-lib, *.dylib* -> ./bin
+#lib, *.dylib* -> ./bin

@@ -17,13 +17,26 @@ DEPENCY_INFO:
 # Сборка приложения с учетом зависимостей
 BUILD: CLEAN
 	# --profile=../profiles/apple_clang_profile 
-	mkdir -p build && \
-	cd build && \
+	mkdir -p build_native && \
+	cd build_native && \
 	conan install \
 		--settings os="Macos" \
 		--settings compiler="apple-clang" \
 		--settings arch=x86_64 \
 		--settings build_type=Release \
+		--build=missing \
+		--install-folder . \
+		.. && \
+	cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release .. && \
+	cmake --build . ; \
+	cd ../
+
+# Сборка приложения с учетом зависимостей
+BUILD_IOS: CLEAN
+	mkdir -p build_ios && \
+	cd build_ios && \
+	conan install \
+		--profile=../profiles/ios_profile \
 		--build=missing \
 		--install-folder . \
 		.. && \
@@ -39,4 +52,8 @@ RUN: BUILD
 
 # Чистка
 CLEAN:
-	rm -rf build/
+	rm -rf build*/
+
+clean: CLEAN
+
+clear: CLEAN
