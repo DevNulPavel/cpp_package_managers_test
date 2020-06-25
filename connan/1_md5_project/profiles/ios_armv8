@@ -14,3 +14,4 @@ build_type=Release
 
 [options]
 darwin-toolchain:bitcode=True
+libcurl:darwin_ssl=False

@@ -14,3 +14,4 @@ darwin-toolchain/1.0.8@theodelrieu/stable
 
 [options]
 darwin-toolchain:bitcode=True
+libcurl:darwin_ssl=False

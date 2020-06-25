@@ -140,6 +140,19 @@ BUILD_ANDROID_ARMV8: CLEAN
 	cmake --build . ; \
 	cd ../
 
+# Сборка приложения с учетом зависимостей
+BUILD_LINUX_x86_64: CLEAN
+	mkdir -p build_linux_x86_64 && \
+	cd build_linux_x86_64 && \
+	conan install \
+		--profile=../profiles/linux_x86_64 \
+		--build=missing \
+		--install-folder . \
+		.. && \
+	cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release .. && \
+	cmake --build . ; \
+	cd ../
+
 # Запуск
 RUN: BUILD
 	cd build/bin && \

@@ -24,7 +24,7 @@ cmake
 #openssl:no_async=True
 #openssl:shared=False
 libcurl:with_openssl=True
-libcurl:darwin_ssl=False
+#libcurl:darwin_ssl=False
 libcurl:shared=False
 
 
