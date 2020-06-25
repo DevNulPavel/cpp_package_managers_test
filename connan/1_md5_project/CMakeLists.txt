@@ -13,6 +13,12 @@ conan_basic_setup()
 # CONAN_LIB_DIRS
 # CONAN_LIBS
 # CONAN_DEFINES
+message("\n\n")
+message("CONAN_INCLIDE_DIRS: ${CONAN_INCLIDE_DIRS}")
+message("CONAN_LIB_DIRS: ${CONAN_LIB_DIRS}")
+message("CONAN_LIBS: ${CONAN_LIBS}")
+message("CONAN_DEFINES: ${CONAN_DEFINES}")
+message("\n\n")
 
 # Прописываем инклюды
 include_directories(${CONAN_INCLIDE_DIRS})

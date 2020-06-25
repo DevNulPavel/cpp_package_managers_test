@@ -3,7 +3,7 @@
 
 [requires]
 zlib/1.2.11
-#openssl/1.1.1g
+openssl/1.1.1g
 libcurl/7.70.0
 assimp/5.0.1
 
@@ -21,8 +21,8 @@ cmake
 # poco:shared=False
 # poco:cxx_14=True
 # poco:fPIC=True
-#openssl:no_async=True
-#openssl:shared=False
+openssl:no_async=True
+openssl:shared=False
 libcurl:with_openssl=True
 #libcurl:darwin_ssl=False
 libcurl:shared=False

@@ -153,6 +153,25 @@ BUILD_LINUX_x86_64: CLEAN
 	cmake --build . ; \
 	cd ../
 
+#  -s BINARYEN_TRAP_MODE='clamp'
+BUILD_EMSCRIPTEN_WASM: CLEAN
+	mkdir -p build_emscripten_wasm && \
+	cd build_emscripten_wasm && \
+	conan install \
+		--profile=../profiles/emscripten_wasm \
+		--build=missing \
+		--install-folder . \
+		.. && \
+	echo "\n\nProject part\n\n" && \
+	cmake \
+		-G "Unix Makefiles" \
+		-DCMAKE_CXX_FLAGS=" -s WASM=1 " \
+		-DCMAKE_TOOLCHAIN_FILE=$(EMSCRIPTEN_PATH)/cmake/Modules/Platform/Emscripten.cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
+	cmake --build . ; \
+	cd ../
+
 # Запуск
 RUN: BUILD
 	cd build/bin && \
