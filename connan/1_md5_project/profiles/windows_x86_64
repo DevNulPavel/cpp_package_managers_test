@@ -1,0 +1,14 @@
+# https://github.com/conan-io/conan/issues/4977
+
+include(default)
+
+[settings]
+#os=Windows
+#os.subsystem=None
+os=WindowsStore
+os.version=10.0
+arch=x86_64
+arch_build=x86_64
+compiler=Visual Studio
+compiler.version=16
+build_type=Release

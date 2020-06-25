@@ -172,6 +172,17 @@ BUILD_EMSCRIPTEN_WASM: CLEAN
 	cmake --build . ; \
 	cd ../
 
+BUILD_WINDOWS_X86_64: CLEAN
+	mkdir -p build_windows_x86_64 && \
+	cd build_windows_x86_64 && \
+	conan install \
+		--profile=../profiles/windows_x86_64 \
+		--build=missing \
+		--install-folder . \
+		.. && \
+	cmake -G "Visual Studio 2019" -DCMAKE_BUILD_TYPE=Release .. && \
+	cd ../
+
 # Запуск
 RUN: BUILD
 	cd build/bin && \
