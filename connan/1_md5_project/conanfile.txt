@@ -1,6 +1,13 @@
+# TODO: Проверить совместимость версий openssl и libcurl, libcurl ужее имеет в зависимостях openssl
+#poco/1.9.4
+
 [requires]
-poco/1.9.4
-# openssl/1.0.2u - it overrides previous depencies
+zlib/1.2.11
+#openssl/1.1.1g
+libcurl/7.70.0
+assimp/5.0.1
+
+[build_requires]
 
 [generators]
 cmake
@@ -11,10 +18,15 @@ cmake
 #   conan install .. -o poco:shared=True -o openssl:shared=True
 #   conan install .. -o *:shared=True
 [options]
-poco:shared=False
-poco:cxx_14=True
-poco:fPIC=True
-openssl:shared=False
+# poco:shared=False
+# poco:cxx_14=True
+# poco:fPIC=True
+#openssl:no_async=True
+#openssl:shared=False
+libcurl:with_openssl=True
+libcurl:darwin_ssl=False
+libcurl:shared=False
+
 
 [imports]
 # Копирует все динамические библиотеки из пакетов в папку bin

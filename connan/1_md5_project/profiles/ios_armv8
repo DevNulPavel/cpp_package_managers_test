@@ -1,0 +1,16 @@
+# https://github.com/theodelrieu/conan-darwin-toolchain
+# TODO: Плохо собирается со старыми векрсиями iOS
+
+include(default)
+
+[build_requires]
+darwin-toolchain/1.0.8@theodelrieu/stable
+
+[settings]
+os=iOS
+os.version=10.0
+arch=armv8
+build_type=Release
+
+[options]
+darwin-toolchain:bitcode=True
