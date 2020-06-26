@@ -73,6 +73,35 @@ BUILD_IOS_ARMV8: CLEAN
 	cd ../
 
 # Сборка приложения с учетом зависимостей
+BUILD_IOS_UNIVERSAL: CLEAN
+	mkdir -p build_ios_universal && \
+	cd build_ios_universal && \
+	conan install \
+		--profile=../profiles/ios_armv7 \
+		--build=missing \
+		--install-folder ./armv7 \
+		.. && \
+	conan install \
+		--profile=../profiles/ios_armv8 \
+		--build=missing \
+		--install-folder ./armv8 \
+		.. && \
+	cp ./armv8/conanbuildinfo.cmake ./conanbuildinfo.cmake && \
+	cp -R ./armv8/include ./include && \
+	mkdir -p ./lib && \
+	bash ../lipo_convert.sh && \
+	cmake \
+		-G "Unix Makefiles" \
+		-DCMAKE_TOOLCHAIN_FILE=cmake/ios_toolchain.cmake \
+		-DENABLE_BITCODE=1 \
+		-DDEPLOYMENT_TARGET=10.0 \
+		-DENABLE_VISIBILITY=1 \
+		-DENABLE_STRICT_TRY_COMPILE=1 \
+		-DCMAKE_BUILD_TYPE=Release .. && \
+	cmake --build . ; \
+	cd ../
+
+# Сборка приложения с учетом зависимостей
 BUILD_OSX_x86_64: CLEAN
 	mkdir -p build_osx_x86_64 && \
 	cd build_osx_x86_64 && \

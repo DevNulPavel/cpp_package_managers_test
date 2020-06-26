@@ -1,5 +1,8 @@
 # https://github.com/theodelrieu/conan-darwin-toolchain
+# https://github.com/conan-io/conan/issues/1047
+# https://github.com/theodelrieu/conan-darwin-toolchain/issues/2
 # TODO: Плохо собирается со старыми векрсиями iOS
+
 
 include(default)
 

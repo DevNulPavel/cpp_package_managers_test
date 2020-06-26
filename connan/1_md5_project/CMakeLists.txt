@@ -5,8 +5,9 @@ add_definitions("-std=c++17")
 
 # Подключаем зависимости, которые выкачал conan
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-# Прописываем разные инклюды и дефайны зависимостей
-conan_basic_setup()
+
+# Прописываем разные инклюды и дефайны зависимостей для текущей сборки
+# conan_basic_setup()
 
 # Экспортируемые значения из conan
 # CONAN_INCLIDE_DIRS
@@ -21,10 +22,25 @@ message("CONAN_DEFINES: ${CONAN_DEFINES}")
 message("\n\n")
 
 # Прописываем инклюды
-include_directories(${CONAN_INCLIDE_DIRS})
+#include_directories(${CONAN_INCLIDE_DIRS})
+
+# Инклюды будем брать после копирования
+include_directories(${CMAKE_BINARY_DIR}/include)
+
+# Используем библиотеки из папки lib в директории сборки
+message("Library search path: ${CMAKE_BINARY_DIR}/lib\n\n")
+link_directories(${CMAKE_BINARY_DIR}/lib)
+# target_link_directories(md5 PUBLIC ${CMAKE_BINARY_DIR}/lib)
 
 # Закидываем наши необходимые исходники
 add_executable(md5 src/main.cpp)
 
 # Подключаем зависимости, которые conan выкачал
-target_link_libraries(md5 ${CONAN_LIBS})
+# target_link_libraries(md5 ${CONAN_LIBS})
+
+# Из-за emscripten приходится руками
+if(EMSCRIPTEN)
+    target_link_libraries(md5 assimp IrrXML zlibstatic)
+else()
+    target_link_libraries(md5 assimp IrrXML z)
+endif()

@@ -1,10 +1,12 @@
+# https://docs.conan.io/en/latest/reference/conanfile_txt.html?highlight=imports
+
 # TODO: Проверить совместимость версий openssl и libcurl, libcurl ужее имеет в зависимостях openssl
 #poco/1.9.4
 
 [requires]
 zlib/1.2.11
-openssl/1.1.1g
-libcurl/7.70.0
+# openssl/1.1.1g
+# libcurl/7.70.0
 assimp/5.0.1
 
 [build_requires]
@@ -27,9 +29,15 @@ libcurl:with_openssl=True
 #libcurl:darwin_ssl=False
 libcurl:shared=False
 
-
+# https://docs.conan.io/en/latest/reference/conanfile_txt.html?highlight=imports
 [imports]
-# Копирует все динамические библиотеки из пакетов в папку bin
-#bin, *.dll -> ./bin
-# Копирует все динамические библиотеки из пакетов в папку bin 
-#lib, *.dylib* -> ./bin
+# Копирует все динамические библиотеки из пакетов и папки bin в папку bin локальную
+# Copies all dll files from packages bin folder to my local "bin" folder
+bin, *.dll -> ./lib
+# Копирует все библиотеки из пакетов и их папок lib в папку lib локальную
+# Copies all dylib files from packages lib folder to my local "bin" folder
+lib, *.dylib* -> ./lib
+lib, *.a* -> ./lib
+lib, *.so* -> ./lib
+# Копирует все динамические библиотеки из пакетов в папку lib 
+include, * -> ./include
