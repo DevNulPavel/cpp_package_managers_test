@@ -181,12 +181,33 @@ BUILD_LINUX_x86_64: CLEAN
 	cmake --build . ; \
 	cd ../
 
-#  -s BINARYEN_TRAP_MODE='clamp'
-BUILD_EMSCRIPTEN_WASM: CLEAN
-	mkdir -p build_emscripten_wasm && \
-	cd build_emscripten_wasm && \
+# TODO: Fastcomp version
+#  
+BUILD_EMSCRIPTEN_WASM_FASTCOM: CLEAN
+	mkdir -p build_emscripten_wasm_fastcomp && \
+	cd build_emscripten_wasm_fastcomp && \
 	conan install \
-		--profile=../profiles/emscripten_wasm \
+		--profile=../profiles/emscripten_wasm_fastcomp \
+		--build=missing \
+		--install-folder . \
+		.. && \
+	echo "\n\nProject part\n\n" && \
+	cmake \
+		-G "Unix Makefiles" \
+		-DCMAKE_CXX_FLAGS=" -s WASM=1 -s BINARYEN_TRAP_MODE='clamp' " \
+		-DCMAKE_TOOLCHAIN_FILE=$(EMSCRIPTEN_PATH)/cmake/Modules/Platform/Emscripten.cmake \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
+	cmake --build . ; \
+	cd ../
+
+# TODO: Fastcomp version
+#  -s BINARYEN_TRAP_MODE='clamp'
+BUILD_EMSCRIPTEN_WASM_UPSTREAM: CLEAN
+	mkdir -p build_emscripten_wasm_upstream && \
+	cd build_emscripten_wasm_upstream && \
+	conan install \
+		--profile=../profiles/emscripten_wasm_upstream \
 		--build=missing \
 		--install-folder . \
 		.. && \

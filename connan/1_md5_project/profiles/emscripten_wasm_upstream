@@ -1,0 +1,35 @@
+# https://docs.conan.io/en/latest/integrations/cross_platform/emscripten.html
+# https://github.com/bincrafters/conan-emsdk_installer/blob/testing/1.39.13/conanfile.py
+# https://docs.conan.io/en/latest/extending/custom_settings.html
+
+include(default)
+
+# arch=x86
+[settings]
+os=Emscripten
+arch=wasm
+compiler=clang
+compiler.version=10
+compiler.libcxx=libc++
+build_type=Release
+
+# emsdk_installer/1.38.29@bincrafters/stable
+[build_requires]
+
+[options]
+openssl:no_threads=True
+openssl:no_asm=True
+openssl:no_sse2=True
+
+# PATH=[/Users/devnul/emsdk,/Users/devnul/emsdk/upstream/emscripten,/Users/devnul/emsdk/upstream/emscripten/tools]
+# EMSDK=/Users/devnul/emsdk
+# EMSCRIPTEN=/Users/devnul/emsdk/upstream/emscripten
+# EM_CONFIG=/Users/devnul/emsdk/.emscripten
+# EM_CACHE=/Users/devnul/emsdk/.emscripten_cache
+# BINARYEN_ROOT=/Users/devnul/emsdk/upstream
+# CONAN_CMAKE_TOOLCHAIN_FILE=/Users/devnul/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
+[env]
+AR=emar
+RANLIB=emranlib
+CC=emcc
+CXX=em++
