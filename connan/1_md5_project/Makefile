@@ -16,7 +16,6 @@ DEPENCY_INFO:
 
 # Сборка приложения с учетом зависимостей
 BUILD: CLEAN
-	# --profile=../profiles/apple_clang_profile 
 	mkdir -p build_native && \
 	cd build_native && \
 	conan install \
@@ -172,15 +171,76 @@ BUILD_EMSCRIPTEN_WASM: CLEAN
 	cmake --build . ; \
 	cd ../
 
+# -A "Win32"
+# -A "x86"
+# -A "x64"
+BUILD_WINDOWS_X86: CLEAN
+	mkdir -p build_windows_x86 && \
+	cd build_windows_x86 && \
+	powershell -Command \
+		"conan.exe install \
+			--profile=..\profiles\windows_x86 \
+			--build=missing \
+			--install-folder . \
+			.." && \
+	echo "----- Project part -----" && \
+	cmake \
+		-G "Visual Studio 16 2019" \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
+	cd ../
+
+# -A "Win32"
+# -A "x86"
+# -A "x64"
 BUILD_WINDOWS_X86_64: CLEAN
 	mkdir -p build_windows_x86_64 && \
 	cd build_windows_x86_64 && \
-	conan install \
-		--profile=../profiles/windows_x86_64 \
-		--build=missing \
-		--install-folder . \
+	powershell -Command \
+		"conan.exe install \
+			--profile=..\profiles\windows_x86_64 \
+			--build=missing \
+			--install-folder . \
+			.." && \
+	echo "----- Project part -----" && \
+	cmake \
+		-G "Visual Studio 16 2019" \
+		-DCMAKE_BUILD_TYPE=Release \
 		.. && \
-	cmake -G "Visual Studio 2019" -DCMAKE_BUILD_TYPE=Release .. && \
+	cd ../
+
+# -A "ARM"
+BUILD_WINDOWS_ARMV7: CLEAN
+	mkdir -p build_windows_armv7 && \
+	cd build_windows_armv7 && \
+	powershell -Command \
+		"conan.exe install \
+			--profile=..\profiles\windows_armv7 \
+			--build=missing \
+			--install-folder . \
+			.." && \
+	echo "----- Project part -----" && \
+	cmake \
+		-G "Visual Studio 16 2019" \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
+	cd ../
+
+# -A "ARM64"
+BUILD_WINDOWS_ARMV8: CLEAN
+	mkdir -p build_windows_armv8 && \
+	cd build_windows_armv8 && \
+	powershell -Command \
+		"conan.exe install \
+			--profile=..\profiles\windows_armv8 \
+			--build=missing \
+			--install-folder . \
+			.." && \
+	echo "----- Project part -----" && \
+	cmake \
+		-G "Visual Studio 16 2019" \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
 	cd ../
 
 # Запуск

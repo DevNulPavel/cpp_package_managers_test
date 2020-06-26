@@ -2,8 +2,8 @@
 
 // TODO: Абсолютные или относительные пути?
 //#include <curl/curl.h>
-// #include <zlib.h>
-// #include <assimp/anim.h>
+#include <zlib.h>
+#include <assimp/anim.h>
 //#include <openssl/opensslv.h>
 //#include <Poco/MD5Engine.h>
 //#include <Poco/DigestStream.h>
