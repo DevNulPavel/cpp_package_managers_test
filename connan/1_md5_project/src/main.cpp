@@ -3,8 +3,8 @@
 // TODO: Абсолютные или относительные пути?
 //#include <curl/curl.h>
 #include <zlib.h>
-#include <freetype2/ft2build.h>
-#include <freetype2/freetype/freetype.h>
+#include "freetype2/ft2build.h"
+#include "freetype2/freetype/freetype.h"
 // #include <assimp/anim.h>
 //#include <openssl/opensslv.h>
 //#include <Poco/MD5Engine.h>
@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     const char* zlib_v_str = zlibVersion();
     printf("ZLib version: %s", zlib_v_str);
 
-    FT_Library* library = nullptr;
+    FT_Library* library = new FT_Library;
     FT_Init_FreeType(library);
     
     return 0;

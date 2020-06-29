@@ -219,6 +219,7 @@ BUILD_EMSCRIPTEN_WASM_UPSTREAM: CLEAN
 	mkdir -p build_emscripten_wasm_upstream && \
 	cd build_emscripten_wasm_upstream && \
 	conan install \
+		--env CONAN_CMAKE_TOOLCHAIN_FILE=$(shell pwd)/Emscripten_upstream.cmake \
 		--profile=../profiles/emscripten_wasm_upstream \
 		--build=missing \
 		--install-folder . \
@@ -227,8 +228,7 @@ BUILD_EMSCRIPTEN_WASM_UPSTREAM: CLEAN
 	cmake \
 		-G "Unix Makefiles" \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_CXX_FLAGS=" -s WASM=1 " \
-		-DCMAKE_TOOLCHAIN_FILE=../Emscripten_upstream.cmake \
+		-DCMAKE_TOOLCHAIN_FILE=$(shell pwd)/Emscripten_upstream.cmake \
 		.. && \
 	cmake --build . ; \
 	cd ../

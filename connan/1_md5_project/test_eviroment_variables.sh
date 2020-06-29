@@ -59,7 +59,7 @@ export PATH=$VULKAN_SDK/bin:$PATH
 # export BINARYEN_ROOT="/Users/devnul/emsdk/fastcomp"
 # export EMSCRIPTEN_ROOT="/Users/devnul/emsdk/fastcomp/emscripten"
 # export EMSCRIPTEN_NATIVE_OPTIMIZER="/Users/devnul/emsdk/fastcomp/bin/optimizer"
-# export NODE_JS="/Users/devnul/emsdk/node/12.9.1_64bit/bin/node"
+# export NODE_JS="/Users/devnul/emsdk/node/8.9.1_64bit/bin/node"
 # export EMSCRIPTEN_PATH="/Users/devnul/emsdk/fastcomp/emscripten"
 # export FASTCOMP_PATH="/Users/devnul/emsdk/fastcomp"
 # export PVRCLI_PATH="/Applications/Imagination/PowerVR_Graphics/PowerVR_Tools/PVRTexTool/CLI/OSX_x86"
@@ -71,15 +71,28 @@ export PATH=$VULKAN_SDK/bin:$PATH
 ####################################
 # Переменные с использованием emsdk (latest LLVM, раньше назывался upstream) (Вроде как стабильная версия: ./emsdk install 1.38.48-upstream && ./emsdk activate 1.38.48-upstream)
 ####################################
+# export EMSDK_PATH="/Users/devnul/emsdk"
+# export LLVM_ROOT="/Users/devnul/emsdk/upstream/bin"
+# export BINARYEN_ROOT="/Users/devnul/emsdk/upstream"
+# export EMSCRIPTEN_ROOT="/Users/devnul/emsdk/upstream/emscripten"
+# export EMSCRIPTEN_PATH="/Users/devnul/emsdk/upstream/emscripten"
+# export NODE_JS="/Users/devnul/emsdk/node/8.9.1_64bit/bin/node"
+# export PVRCLI_PATH="/Applications/Imagination/PowerVR_Graphics/PowerVR_Tools/PVRTexTool/CLI/OSX_x86"
+# export PATH=$EMSCRIPTEN_PATH:$EMSCRIPTEN_PATH/tools:$PVRCLI_PATH:$EMSDK_PATH/node/8.9.1_64bit/bin:$PATH
+# export EMSCRIPTEN=$EMSCRIPTEN_PATH
+# export EMSDK=$EMSDK_PATH
+
+####################################
+# Переменные с использованием emsdk (latest LLVM, раньше назывался upstream) (Вроде как стабильная версия: ./emsdk install 1.39.18 && ./emsdk activate 1.39.18)
+####################################
 export EMSDK_PATH="/Users/devnul/emsdk"
 export LLVM_ROOT="/Users/devnul/emsdk/upstream/bin"
 export BINARYEN_ROOT="/Users/devnul/emsdk/upstream"
 export EMSCRIPTEN_ROOT="/Users/devnul/emsdk/upstream/emscripten"
 export EMSCRIPTEN_PATH="/Users/devnul/emsdk/upstream/emscripten"
-export NODE_JS="/Users/devnul/emsdk/node/12.9.1_64bit/bin/node"
-export FASTCOMP_PATH="/Users/devnul/emsdk/upstream/fastcomp"
+export NODE_JS="/Users/devnul/emsdk/node/8.9.1_64bit/bin/node"
 export PVRCLI_PATH="/Applications/Imagination/PowerVR_Graphics/PowerVR_Tools/PVRTexTool/CLI/OSX_x86"
-export PATH=$EMSCRIPTEN_PATH:$EMSCRIPTEN_PATH/tools:$PVRCLI_PATH:$EMSDK_PATH/node/12.9.1_64bit/bin:$PATH
+export PATH=$EMSCRIPTEN_PATH:$EMSCRIPTEN_PATH/tools:$PVRCLI_PATH:$EMSDK_PATH/node/8.9.1_64bit/bin:$PATH
 export EMSCRIPTEN=$EMSCRIPTEN_PATH
 export EMSDK=$EMSDK_PATH
 

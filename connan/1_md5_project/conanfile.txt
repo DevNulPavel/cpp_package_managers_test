@@ -31,6 +31,7 @@ libcurl:with_openssl=True
 #libcurl:darwin_ssl=False
 libcurl:shared=False
 freetype:shared=False
+freetype:fPIC=True
 # freetype:with_bzip2=False
 # freetype:with_zlib=False
 # freetype:with_png=False

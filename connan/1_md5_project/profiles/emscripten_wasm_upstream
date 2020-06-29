@@ -11,12 +11,12 @@ include(default)
 # arch=wasm - raw
 [settings]
 os=Emscripten
-arch=wasm
-# arch=x86
+# arch=wasm
+arch=x86
 compiler=clang
 # compiler.version=6.0
 compiler.version=10
-compiler.libcxx=libc++
+# compiler.libcxx=libc++
 build_type=Release
 
 [build_requires]
@@ -57,7 +57,7 @@ build_type=Release
 # CMAKE_CXX20_COMPILE_FEATURES=
 # CMAKE_CROSSCOMPILING_EMULATOR=/Users/devnul/emsdk/node/12.9.1_64bit/bin/node
 
-CONAN_CMAKE_TOOLCHAIN_FILE=/Users/devnul/Projects/cpp_package_mangers_test/connan/1_md5_project/Emscripten_upstream.cmake
+#CONAN_CMAKE_TOOLCHAIN_FILE=/Users/devnul/Projects/cpp_package_mangers_test/connan/1_md5_project/Emscripten_upstream.cmake
 
 # PATH=[/Users/devnul/emsdk,/Users/devnul/emsdk/upstream/emscripten,/Users/devnul/emsdk/upstream/emscripten/tools]
 # EMSDK=/Users/devnul/emsdk
