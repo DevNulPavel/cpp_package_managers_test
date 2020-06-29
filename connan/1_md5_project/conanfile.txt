@@ -7,7 +7,9 @@
 zlib/1.2.11
 # openssl/1.1.1g
 # libcurl/7.70.0
-assimp/5.0.1
+# assimp/5.0.1
+libpng/1.6.37
+freetype/2.10.1
 
 [build_requires]
 
@@ -28,6 +30,11 @@ openssl:shared=False
 libcurl:with_openssl=True
 #libcurl:darwin_ssl=False
 libcurl:shared=False
+freetype:shared=False
+# freetype:with_bzip2=False
+# freetype:with_zlib=False
+# freetype:with_png=False
+bzip2:build_executable=False
 
 # https://docs.conan.io/en/latest/reference/conanfile_txt.html?highlight=imports
 [imports]

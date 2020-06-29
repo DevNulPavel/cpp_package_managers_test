@@ -1,25 +1,32 @@
 # https://docs.conan.io/en/latest/integrations/cross_platform/emscripten.html
 # https://github.com/bincrafters/conan-emsdk_installer/blob/testing/1.39.13/conanfile.py
+# https://github.com/bincrafters/conan-emsdk_installer/blob/stable/1.38.29/conanfile.py
 # https://docs.conan.io/en/latest/extending/custom_settings.html
+# https://docs.conan.io/en/latest/reference/config_files/conan.conf.html?highlight=conan_cmake_toolchain_file
+# https://docs.conan.io/en/latest/reference/env_vars.html?highlight=conan_cmake_toolchain_file
 
 include(default)
 
-# arch=x86
+# arch=x86 - for emsdk_installer
+# arch=wasm - raw
 [settings]
 os=Emscripten
 arch=wasm
+# arch=x86
 compiler=clang
+# compiler.version=6.0
 compiler.version=10
 compiler.libcxx=libc++
 build_type=Release
 
-# emsdk_installer/1.38.29@bincrafters/stable
 [build_requires]
+# emsdk_installer/1.38.29@bincrafters/stable
 
 [options]
-openssl:no_threads=True
-openssl:no_asm=True
-openssl:no_sse2=True
+# openssl:no_threads=True
+# openssl:no_asm=True
+# openssl:no_sse2=True
+# bzip2:build_executable=False
 
 # PATH=[/Users/devnul/emsdk,/Users/devnul/emsdk/upstream/emscripten,/Users/devnul/emsdk/upstream/emscripten/tools]
 # EMSDK=/Users/devnul/emsdk
@@ -29,7 +36,36 @@ openssl:no_sse2=True
 # BINARYEN_ROOT=/Users/devnul/emsdk/upstream
 # CONAN_CMAKE_TOOLCHAIN_FILE=/Users/devnul/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 [env]
-AR=emar
-RANLIB=emranlib
-CC=emcc
-CXX=em++
+# AR=emar
+# RANLIB=emranlib
+# CC=emcc
+# CXX=em++
+# LD=/usr/bin/ld
+# CMAKE_AR=emar
+# CONAN_CMAKE_AR=emar
+# CMAKE_RANLIB=emranlib
+# CONAN_CMAKE_RANLIB=emranlib
+# CMAKE_C_COMPILE_FEATURES=c_std_90;c_function_prototypes;c_std_99;c_restrict;c_variadic_macros;c_std_11;c_static_assert
+# CMAKE_C90_COMPILE_FEATURES=c_std_90;c_function_prototypes
+# CMAKE_C99_COMPILE_FEATURES=c_std_99;c_restrict;c_variadic_macros
+# CMAKE_C11_COMPILE_FEATURES=c_std_11;c_static_assert
+# CMAKE_CXX_COMPILE_FEATURES=cxx_std_98;cxx_template_template_parameters;cxx_std_11;cxx_alias_templates;cxx_alignas;cxx_alignof;cxx_attributes;cxx_auto_type;cxx_constexpr;cxx_decltype;cxx_decltype_incomplete_return_types;cxx_default_function_template_args;cxx_defaulted_functions;cxx_defaulted_move_initializers;cxx_delegating_constructors;cxx_deleted_functions;cxx_enum_forward_declarations;cxx_explicit_conversions;cxx_extended_friend_declarations;cxx_extern_templates;cxx_final;cxx_func_identifier;cxx_generalized_initializers;cxx_inheriting_constructors;cxx_inline_namespaces;cxx_lambdas;cxx_local_type_template_args;cxx_long_long_type;cxx_noexcept;cxx_nonstatic_member_init;cxx_nullptr;cxx_override;cxx_range_for;cxx_raw_string_literals;cxx_reference_qualified_functions;cxx_right_angle_brackets;cxx_rvalue_references;cxx_sizeof_member;cxx_static_assert;cxx_strong_enums;cxx_thread_local;cxx_trailing_return_types;cxx_unicode_literals;cxx_uniform_initialization;cxx_unrestricted_unions;cxx_user_literals;cxx_variadic_macros;cxx_variadic_templates;cxx_std_14;cxx_aggregate_default_initializers;cxx_attribute_deprecated;cxx_binary_literals;cxx_contextual_conversions;cxx_decltype_auto;cxx_digit_separators;cxx_generic_lambdas;cxx_lambda_init_captures;cxx_relaxed_constexpr;cxx_return_type_deduction;cxx_variable_templates;cxx_std_17
+# CMAKE_CXX98_COMPILE_FEATURES=cxx_std_98;cxx_template_template_parameters
+# CMAKE_CXX11_COMPILE_FEATURES=cxx_std_11;cxx_alias_templates;cxx_alignas;cxx_alignof;cxx_attributes;cxx_auto_type;cxx_constexpr;cxx_decltype;cxx_decltype_incomplete_return_types;cxx_default_function_template_args;cxx_defaulted_functions;cxx_defaulted_move_initializers;cxx_delegating_constructors;cxx_deleted_functions;cxx_enum_forward_declarations;cxx_explicit_conversions;cxx_extended_friend_declarations;cxx_extern_templates;cxx_final;cxx_func_identifier;cxx_generalized_initializers;cxx_inheriting_constructors;cxx_inline_namespaces;cxx_lambdas;cxx_local_type_template_args;cxx_long_long_type;cxx_noexcept;cxx_nonstatic_member_init;cxx_nullptr;cxx_override;cxx_range_for;cxx_raw_string_literals;cxx_reference_qualified_functions;cxx_right_angle_brackets;cxx_rvalue_references;cxx_sizeof_member;cxx_static_assert;cxx_strong_enums;cxx_thread_local;cxx_trailing_return_types;cxx_unicode_literals;cxx_uniform_initialization;cxx_unrestricted_unions;cxx_user_literals;cxx_variadic_macros;cxx_variadic_templates
+# CMAKE_CXX14_COMPILE_FEATURES=cxx_std_14;cxx_aggregate_default_initializers;cxx_attribute_deprecated;cxx_binary_literals;cxx_contextual_conversions;cxx_decltype_auto;cxx_digit_separators;cxx_generic_lambdas;cxx_lambda_init_captures;cxx_relaxed_constexpr;cxx_return_type_deduction;cxx_variable_templates
+# CMAKE_CXX17_COMPILE_FEATURES=cxx_std_17
+# CMAKE_CXX20_COMPILE_FEATURES=
+# CMAKE_CROSSCOMPILING_EMULATOR=/Users/devnul/emsdk/node/12.9.1_64bit/bin/node
+
+CONAN_CMAKE_TOOLCHAIN_FILE=/Users/devnul/Projects/cpp_package_mangers_test/connan/1_md5_project/Emscripten_upstream.cmake
+
+# PATH=[/Users/devnul/emsdk,/Users/devnul/emsdk/upstream/emscripten,/Users/devnul/emsdk/upstream/emscripten/tools]
+# EMSDK=/Users/devnul/emsdk
+# EMSCRIPTEN=/Users/devnul/emsdk/upstream/emscripten
+# EM_CONFIG=/Users/devnul/emsdk/.emscripten
+# EM_CACHE=/Users/devnul/emsdk/.emscripten_cache
+# CONAN_CMAKE_TOOLCHAIN_FILE=/Users/devnul/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
+# CONAN_CMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
+# CONAN_CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=NEVER
+# CONAN_CMAKE_FIND_ROOT_PATH_MODE_INCLUDE=NEVER
+# CONAN_CMAKE_FIND_ROOT_PATH_MODE_PACKAGE=NEVER
